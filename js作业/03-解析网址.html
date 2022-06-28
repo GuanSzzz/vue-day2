@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //    需求：http://www.baidu.com?name=zhangsan&age=18&sex=nan#， 封装一个函数，将该地址里的参数解析出来
+      let str = `http://www.baidu.com?name=zhangsan&age=18&sex=nan#`;
+      let obj = {};
+      const Fn = (str) => {
+        let arr = str.split("?");
+        arr = arr[1].split("#");
+        str = arr[0];
+        arr = str.split("&");
+        for (let i = 0; i < arr.length; i++) {
+          let a = arr[i].split("=");
+          //   console.log(a);
+          obj[a[0]] = a[1];
+        }
+        return obj;
+      };
+      Fn(str);
+      console.log(Fn(str));
+
+      // 老师的答案
+      //   const process = (url)=>{
+      //   const index1 = url.indexOf('?'),  找到？的索引号
+      //         index2 = url.indexOf('#'),  找到# 的索引号
+      //         params = url.slice(index1+1,index2 ).split('&')  以？索引号+1开始，以#索引号结束 进行截取字符串：再以&转换为数组
+      //   return params.reduce((pre,curr)=>{   利用数组的reduce方法
+      //     // [name,zhangsan]
+      //     // { name:zhangsan }
+      //     const [key,value] = curr.split('=')
+      //     pre[key] = value
+      //     return pre
+      //   },{})
+      // }
+
+      // process(url)
+    </script>
+  </body>
+</html>
